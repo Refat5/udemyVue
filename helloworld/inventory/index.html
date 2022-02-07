@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    
+    <title>Inventory List Of Item</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+  .container{
+      max-width: 600px;
+  }
+</style>
+<body>
+   
+    
+   <div class="container mt-5" id="app">
+       <div class="car-header text-center">
+           <h3>My Bazzer List</h3>
+       </div>
+       <hr>
+       <form @submit.prevent="addItem" class="from-group">
+           <input type="text" class="form-control" v-model="newItem" >
+           
+       </form>
+    <ul class="list-group">
+
+        <li class="list-group-item" v-for="item in items">
+            {{item.name}} - {{item.price}}
+        </li>
+
+      </ul>
+    </div>
+
+
+    <script>
+        var myitem = new Vue({
+            el : '#app',
+            data : {
+                items: [
+                    {name: 'rice', price:12.43},
+                    {name: 'water', price:32.43},
+                    {name: 'oil', price:43.43},
+                    {name: 'chicken', price:143.43},
+                ],
+                newItem: '',
+            },
+            methods:{
+                addItem(){
+                    this.items.push({
+                        name: this.newItem,
+                        price: 0.00,
+                    })
+                }
+            }
+
+        })
+        
+    </script>
+</body>
+</html>
