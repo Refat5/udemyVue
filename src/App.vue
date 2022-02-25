@@ -5,7 +5,7 @@
   <div class="container">
    <div class="row">
       <div class="col-sm-9  d-flex justify-content-between">
-             <product></product>
+             <product :items="items"></product>
 
             
       </div>
@@ -24,14 +24,23 @@
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
 import Product from './components/Product';
+import data from './data.js';
 
 export default{
     components:{
         Navbar,
         Cart,
         Product
-
+    },
+    data(){
+      return {
+         items:[]
+      }
+    },
+    mounted(){
+      this.items = data;
     }
+
 
 }
 </script>
