@@ -5,14 +5,14 @@
   <div class="container">
    <div class="row">
       <div class="col-sm-9  d-flex justify-content-between">
-             <product :items="items"></product>
+             <product @newItemAdded="addCartItem" :items="items"></product>
 
             
       </div>
 
       <div class="col-sm-3">
  
-          <cart></cart>
+          <cart :items="cart"></cart>
       </div>
    </div>
   </div>
@@ -34,11 +34,23 @@ export default{
     },
     data(){
       return {
-         items:[]
+         items:[],
+         cart:[{
+           id:1,
+           title:"Orange",
+           price: 32,
+           photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCstGnwN8sGGaLNG9i02mRyKsTs0F_Eb_GaQ&usqp=CAU"
+         }]
       }
     },
     mounted(){
       this.items = data;
+    },
+    methods:{
+      addCartItem(item){
+        this.cart.push(item)
+      }
+
     }
 
 
